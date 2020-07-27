@@ -1,10 +1,11 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace TaxService.Interfaces
 {
     public interface ITaxService
     {
-        decimal GetTaxRate(string zipcode);
+        Task<decimal> GetTaxRate(string zipcode);
 
         void CalculateFromOrder(IOrder order, decimal taxrate)
         {

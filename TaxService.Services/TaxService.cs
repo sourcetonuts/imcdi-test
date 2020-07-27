@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Threading.Tasks;
 using TaxService.Interfaces;
 
 namespace TaxService.Services
@@ -14,9 +15,9 @@ namespace TaxService.Services
             _calculator = calculator;
         }
 
-        public decimal GetTaxRate(string zipcode)
+        public async Task<decimal> GetTaxRate(string zipcode)
         {
-            return _calculator.GetTaxRate(zipcode);
+            return await _calculator.GetTaxRate(zipcode);
         }
     }
 }
