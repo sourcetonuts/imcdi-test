@@ -29,9 +29,7 @@ namespace TaxCalculator.Taxjar
             {
                 httpClient.DefaultRequestHeaders.Authorization = AuthKey;
 
-                var response = await httpClient.GetStringAsync($"https://api.taxjar.com/v2/rates/{zipcode}");
-                //response.Wait();
-                var jsonString = response;
+                var jsonString = await httpClient.GetStringAsync($"https://api.taxjar.com/v2/rates/{zipcode}");
                 var data = JsonConvert.DeserializeObject<TaxData>(jsonString, SettingsSerializer);
                 return data.Rate.CombinedRate;
             }
